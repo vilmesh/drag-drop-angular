@@ -1,0 +1,47 @@
+<div class="container">
+	  <div class="row">
+	    
+	    <div class="col-sm-6">
+  		  <h2>Goods</h2>
+        <ul dnd-list="list" ng-repeat="(listName, list) in ctrl.models.lists">{{listName}}
+          <li ng-repeat="item in list"
+            dnd-draggable="item"
+            dnd-moved="list.splice($index, 1)"
+            dnd-effect-allowed="move"
+            dnd-selected="ctrl.models.selected = item"
+            ng-class="{'selected': ctrl.models.selected === item}">
+            {{item.label}}
+          </li>
+        </ul>
+      </div>
+        
+      <div class="col-sm-6" id="basket">
+        <h2>Basket</h2>
+        <ul dnd-list="ctrl.models.basket" >
+          <li ng-repeat="item in ctrl.models.basket"
+            dnd-draggable="item"
+            dnd-effect-allowed="move"
+            dnd-moved="ctrl.models.basket.splice($index, 1)"
+            dnd-selected="ctrl.models.selected = item"
+            ng-class="{'selected': ctrl.models.selected === item}">
+            {{item.label}}
+          </li>
+          <button type="button" class="btn btn-info" 
+            ng-show="ctrl.models.basket.length && !ctrl.validData"
+            ng-click="ctrl.validation()">
+            Validation
+          </button>
+          <button type="button" class="btn btn-primary" 
+            ng-show="ctrl.validData"
+            ng-click="ctrl.submit()">
+            Submit
+          </button>
+        </ul>
+      </div>
+    </div>
+    
+    <div ng-class="{'alert-danger': !ctrl.validData, 'alert-success': ctrl.validData}"
+      class="alert" role="alert" ng-show="ctrl.info">
+      {{ctrl.info}}
+    </div>
+  </div>
