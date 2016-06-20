@@ -1,8 +1,8 @@
-<div class="container">
-	  <div class="row">
-	    
-	    <div class="col-sm-6">
-  		  <h2>Goods</h2>
+  <div class="container">
+    <div class="row">
+      
+      <div class="col-sm-6">
+        <h2>Goods</h2>
         <ul dnd-list="list" ng-repeat="(listName, list) in ctrl.models.lists">{{listName}}
           <li ng-repeat="item in list"
             dnd-draggable="item"

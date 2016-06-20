@@ -33,10 +33,10 @@ gulp.task('template', function() {
 });
 
 gulp.task('build-less', function(){
-    return gulp.src('./app/styles.less')
-        .pipe(less())
-        .pipe(cleanCSS())
-        .pipe(gulp.dest('./public/css/'));
+  return gulp.src('./app/styles.less')
+    .pipe(less())
+    .pipe(cleanCSS())
+    .pipe(gulp.dest('./public/css/'));
 });
 
 gulp.task('html', ['js', 'build-less', 'template'], function() {
